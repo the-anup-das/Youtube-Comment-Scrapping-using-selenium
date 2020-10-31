@@ -1,3 +1,5 @@
+import os.path
+from os import path
 import pandas as pd
 import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
@@ -35,8 +37,14 @@ for i in range(len(data)):
     label_lst.append(classifier(data.loc[i, "comments"]))
 
 data.insert(0, "labels", label_lst, False)
+if path.exists("spam_data.csv"):
+    PreviousData=pd.read_csv("spam_data.csv")
+    MergeData = pd.concat([PreviousData, data],ignore_index=True)
 
-dataset=pd.DataFrame(data)
-dataset.to_csv("spam_data.csv")
+    MergeData.to_csv("spam_data.csv",index=False)
 
-print("Done!")
+    print("Done!")
+else:
+    data.to_csv("spam_data.csv",index=False)
+
+    print("Done!")

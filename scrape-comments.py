@@ -88,4 +88,4 @@ def scrape(url):
     driver.close()
 
 if __name__ == "__main__":
-    scrape("https://www.youtube.com/watch?v=faTFFSsOJ7o")
+    scrape("https://www.youtube.com/watch?v=eQJteHRyclI")
